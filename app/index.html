@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="extrato-web">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Totalcross - Cadastro de Usuários</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .extrato-conteudo {
+            background-color: #EEE;
+            padding: 20px 20px 10px 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8" class="extrato-conteudo">
+             
+            <div ng-controller="ExtratoController">
+               <hr>
+                <h1>Extrato Web</h1>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Data do lançamento</th>
+                        <th>Descrição</th>
+                        <th>Número</th>
+                        <th>Situação</th>
+                        <th>Data de confirmação</th>
+                        <th>Dados bancários</th>
+                        <th>Valor final</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Aqui serão exibidos os dados do usuários cadastrados -->
+                    <tr ng-repeat="item in extratos">
+                       <td>{{item.dataLancamentoContaCorrenteCliente}}</td>
+                       <td>{{item.lancamentoContaCorrenteCliente.nomeTipoOperacao}}</td>
+                       <td>{{item.lancamentoContaCorrenteCliente.numeroRemessaBanco}}</td>
+                       <td>{{item.lancamentoContaCorrenteCliente.nomeSituacaoRemessa}}</td>
+                       <td>{{item.dataEfetivaLancamento}}</td>
+                       <td>{{item.nomeBanco}} Ag {{item.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroAgencia}} CC {{item.lancamentoContaCorrenteCliente.dadosDomicilioBancario.numeroContaCorrente}}</td>
+                       <td>{{item.valorLancamentoRemessa | currency:"R$":0}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+              </div> 
+       </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
